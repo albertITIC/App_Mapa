@@ -7,7 +7,8 @@
 /* Contenidor del menú */
 .menu-main {
     width: 30%; 
-    padding: 20px;
+    height: 200%;
+    padding: 15px;
     background-color: #f4f4f4;
     display: flex;
     flex-direction: column;
@@ -37,4 +38,71 @@
     margin-top: 20px;
     padding: 10px;
 
+}
+
+.a1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.filtrar-nom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+}
+
+#filtre-nom {
+    width: 80%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+}
+
+.sect-mostrar-info{
+    background-color: pink;
+    padding: 2%;
+    display: flex;
+    height: auto;
+    flex-direction: column; /*Per mostraro de manera vertical*/
+    /* Per centrar la informació */
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+}
+
+
+/* Diferent tipus de colors segons la info que mostrem per pantalla */
+.espai {
+    background-color: #e3f2fd; 
+    border-left: 5px solid #2196f3;
+}
+
+.atraccio {
+    background-color: #fff3e0; 
+    border-left: 5px solid #ff9800;
+}
+
+.museu {
+    background-color: #f1f8e9; 
+    border-left: 5px solid #4caf50;
+}
+
+/* Botó per eliminar els fitxers carregats */
+.btnNetejar{
+    background-color: rgb(180, 67, 55);
+    color: white;
+    border: none;
+    border-radius: 2px;
+}
+
+.btnNetejar:hover{
+    background-color: salmon;
+    cursor: pointer;
 }

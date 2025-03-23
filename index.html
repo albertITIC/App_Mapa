@@ -7,12 +7,8 @@
     
     <!-- Links necessaris -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""/>
-
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-     crossorigin=""/>
+     crossorigin=""/>   
 
     <!-- Make sure you put this AFTER Leaflet's CSS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
@@ -27,20 +23,62 @@
 <body>
 
     <div class="main-container">
-        <!-- Part de la esquerre -->
+        <!-- Part de l'esquerre -->
         <div class="menu-main">
-            Info:
-            <!-- Container per arrosegar fitxers-->
-            <div class="dropZone"> Arrosega aqui el teu csv </div>
-        </div>
+            <!-- Aquí han d'anar els desplegables -->
+            <section class="a1">
+                <!-- Apartat per filtrat per tipus -->
+                <section class="tipus">
+                    <p>Tipus:</p>
+                    <select id="tipus-opcions">
+                        <option value="1">Tots</option>                        
+                    </select>
+                </section>
+    
+                <!-- Apartat per ordenació -->
+                <section class="ordenacio">
+                    <p>Ordenació:</p>
+                    <select id="ordenacio-opcions">
+                        <option value="1">Ascendent</option>
+                        <option value="2">Descendent</option>
+                    </select>
+                </section>
+            </section>
+            <br>
+            <!-- Per poder filtrar per el nom -->
+            <section class="filtrar-nom">
+                <input type="text" id="filtre-nom" placeholder="Escriu un nom...">
+            </section>
 
+            <br>
+            <br>
+            <!-- Text que més endavant serà modificat per mostrar els resultats de búsqueda -->
+            <section class="sect-mostrar-info">
+                <p>No hi ha cap informació per mostrar.</p>                
+            </section>
+
+            <!-- Número de punts carregats totals -->
+             <p>Número total: <span id="span">0</span></p>
+
+            <!-- Botó per netejar la informació del llista de llocs d’interès. -->
+            <button class="btnNetejar">Neteja tot</button>
+
+            <!-- Container per arrossegar fitxers -->
+            <div class="dropZone">Arrossega aquí el teu CSV:</div>
+        </div>
+    
+        <!-- Mapa -->
         <div id="map"></div>
     </div>
-
     
-    <!-- Primer la classe i despres la utilitzo -->
-    <script src="js/Mapa.js"></script>  
-    <script src="js/app.js"></script>
 
+    <!-- Classes per enllaços (i per module) -->
+    <script src="js/Const.js"></script> 
+    <script src="js/Mapa.js"></script>  
+    <script src="js/PuntInteres.js"></script>
+    <script src="js/App.js"></script>
+    <script src="js/Atraccio.js"></script>
+    <script src="js/Museu.js"></script>
+    
 </body>
 </html>
