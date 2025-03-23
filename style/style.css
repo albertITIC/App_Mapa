@@ -80,18 +80,44 @@
 
 /* Diferent tipus de colors segons la info que mostrem per pantalla */
 .espai {
-    background-color: #e3f2fd; 
-    border-left: 5px solid #2196f3;
+    background-color: blue; 
+    padding: 5%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;   
 }
 
 .atraccio {
-    background-color: #fff3e0; 
-    border-left: 5px solid #ff9800;
+    background-color: orange;
+    padding: 5%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;  
 }
 
 .museu {
-    background-color: #f1f8e9; 
-    border-left: 5px solid #4caf50;
+    background-color: green;
+    padding: 5%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;  
+}
+
+.espai button, .atraccio button, .museu button{
+    background-color: rgb(213, 54, 54);
+    color: white;
+}
+
+.espai button:hover, .atraccio button:hover, .museu button:hover{
+    background-color: rgb(185, 47, 47);
+    color: white;
+    cursor: pointer;
 }
 
 /* Botó per eliminar els fitxers carregats */

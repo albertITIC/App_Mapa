@@ -156,13 +156,70 @@ const pintarMuseu = function(obj){
 const renderitzarLlista = function (llista) {
     const sectMostrarInfo = document.querySelector(".sect-mostrar-info");
     sectMostrarInfo.innerHTML = ""; // Netejem el contingut anterior
-
+    
     llista.forEach((punt) => {
         const divPunt = document.createElement("div");
-        divPunt.textContent = `${punt.nom} (${punt.tipus}) - ${punt.direccio}`;
+        divPunt.classList.add("punt-interes"); // Classe general per a tots els punts
+
+        // Afegim la classe segons el tipus
+        if (punt.tipus.toLowerCase() === "espai") {
+            divPunt.classList.add("espai");
+        } else if (punt.tipus.toLowerCase() === "atraccio") {
+            divPunt.classList.add("atraccio");
+        } else if (punt.tipus.toLowerCase() === "museu") {
+            divPunt.classList.add("museu");
+        }
+
+        // Creem el contingut del punt
+        let contingut = `<strong>${punt.nom}</strong> | ${punt.ciutat} | Tipus: ${punt.tipus}`;
+
+        // Afegim informació específica segons el tipus
+        if (punt.tipus.toLowerCase() === "atraccio") {
+            contingut += ` | Horaris: ${punt.horaris} | Preu: ${punt.preu} ${punt.moneda}`;
+            console.log('Mostrant el contingut de atracció: ', contingut);
+
+        } else if (punt.tipus.toLowerCase() === "museu") {
+            contingut += ` | Horaris: ${punt.horaris} | Preu: ${punt.preu} ${punt.moneda} | Descripció: ${punt.descripcio}`;
+            console.log('Mostrant el contingut de museu: ', contingut);
+
+        }
+
+        // Afegim el botó d'eliminar
+        const btnEliminar = document.createElement("button");
+
+        // Modifico el text
+        btnEliminar.textContent = "Eliminar";
+        
+        
+        btnEliminar.classList.add("btn-eliminar");
+        
+        btnEliminar.addEventListener("click", () => {
+            eliminarPunt(punt.id); // Eliminem el punt per la seva ID
+        });
+
+        // Afegim el contingut + el botó d'eliminar al div
+        divPunt.innerHTML = contingut;
+        divPunt.appendChild(btnEliminar);
+
+        // Afegim el div al contenidor
         sectMostrarInfo.appendChild(divPunt);
     });
 };
+
+// ELIMINAR PUNT
+const eliminarPunt = function (id) {
+    // Eliminem el punt de la llista
+    puntInteres = puntInteres.filter((punt) => punt.id !== id);
+
+    // Actualitzem la llista a la interfície
+    renderitzarLlista(puntInteres);
+
+    // Actualitzem el comptador de punts carregats
+    span.textContent = puntInteres.length;
+
+    console.log(`S'ha eliminat el punt amb ID ${id}.`);
+};
+
 
 // Carregar info del país
 async function obtenirInfoPais(codiPais) {
@@ -186,6 +243,35 @@ async function obtenirInfoPais(codiPais) {
         return null;
     }
 }
+
+// FUNCIO NETEJAR TOTS ELS PUNTS
+const netejarTot = function () {
+    // Netegem la llista de punts d'interès
+    puntInteres = [];
+
+    // Restablim el comptador d'ID
+    numId = 0;
+
+    // Netegem el Set de tipus
+    tipusSet.clear();
+
+    // Actualitzem el comptador de punts carregats
+    span.textContent = puntInteres.length;
+
+    // Netegem el menú desplegable de tipus
+    const menuTipus = document.getElementById("tipus-opcions");
+    menuTipus.innerHTML = '<option value="tots">Tots</option>';
+
+    // Netegem la llista de punts a la interfície
+    const sectMostrarInfo = document.querySelector(".sect-mostrar-info");
+    sectMostrarInfo.innerHTML = "No hi ha cap informació per mostrar."; // Torno ha posar per defecte el text inicial
+    
+    alert("S'ha netejat tot correctament.");
+    console.log("S'ha netejat tot correctament.");
+};
+
+// Afegim l'esdeveniment 'click' al botó
+btnNetejar.addEventListener("click", netejarTot);
 
 
 // const renderitzarLlista = function (llista){
@@ -217,3 +303,4 @@ async function obtenirInfoPais(codiPais) {
 //     });
 
 // }
+

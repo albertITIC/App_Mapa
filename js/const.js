@@ -27,3 +27,6 @@ const iva_ESP = 0.21;
 
 // De l'html extreiem el contingut del span (contador del total de fitxers)
 const span = document.getElementById("span")
+
+// Seleccionem el botó "Neteja tot"
+const btnNetejar = document.querySelector(".btnNetejar");
